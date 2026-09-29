@@ -94,6 +94,6 @@ Right aligned columns
 
 ## Images
 
-![bunny](https://imgur.com/H3V13dS)
+![bunny](https://i.imgur.com/H3V13dS.gif)
 
 ## The end!
