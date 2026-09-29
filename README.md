@@ -8,10 +8,13 @@
 ## Horizontal Rules
 
 3 hyphens
+
 ---
 3 asterisks
+
 ***
 3 underscores
+
 ___
 
 ## Emphasis
