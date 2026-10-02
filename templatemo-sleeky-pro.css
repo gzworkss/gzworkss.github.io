@@ -1240,7 +1240,7 @@ html {
     transform: translateY(-3px);
 }
 
-.social-link:img {
+.social-link img {
     width: 24px;
     height: 24px;
     object-fit: contain;
