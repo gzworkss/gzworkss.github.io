@@ -1240,9 +1240,11 @@ html {
     transform: translateY(-3px);
 }
 
-.social-link img {
-    width: 24px;
-    height: 24px;
+.footer-social .social-link img {
+    width: 22px !important;
+    height: 22px !important;
+    max-width: 22px !important;
+    max-height: 22px !important;
     object-fit: contain;
 }
 
