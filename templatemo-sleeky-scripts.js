@@ -368,13 +368,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveNavigation);
 
-    // Services tab functionality
-    const serviceTabs = document.querySelectorAll('.service-tab');
-    const serviceContents = document.querySelectorAll('.service-content');
+            // Services tab functionality (works per section)
+document.querySelectorAll('.services-container').forEach(container => {
+    const tabs = container.querySelectorAll('.service-tab');
+    const contents = Array.from(container.querySelectorAll('.service-content'));
 
-    serviceTabs.forEach(tab => {
+    tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            const targetService = tab.getAttribute('data-service');
+            const target = tab.getAttribute('data-service');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+
+            tab.classList.add('active');
+            const match = contents.find(c => c.id === target);
+            if (match) match.classList.add('active');
+        });
+    });
+});
             
             // Remove active class from all tabs and contents
             serviceTabs.forEach(t => t.classList.remove('active'));
@@ -391,9 +402,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact form handling
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
+        // Contact form handling (only if the form exists)
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        alert(`Thank you ${data.name}! Your message has been sent. We'll get back to you at ${data.email} soon.`);
+        e.target.reset();
+    });
+}
         
         // Simple form validation feedback
         const formData = new FormData(e.target);
