@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveNavigation);
 
-            // Services tab functionality (works per section)
+// Services tab functionality (works per section)
 document.querySelectorAll('.services-container').forEach(container => {
     const tabs = container.querySelectorAll('.service-tab');
     const contents = Array.from(container.querySelectorAll('.service-content'));
@@ -376,10 +376,8 @@ document.querySelectorAll('.services-container').forEach(container => {
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const target = tab.getAttribute('data-service');
-
             tabs.forEach(t => t.classList.remove('active'));
             contents.forEach(c => c.classList.remove('active'));
-
             tab.classList.add('active');
             const match = contents.find(c => c.id === target);
             if (match) match.classList.add('active');
@@ -402,7 +400,7 @@ document.querySelectorAll('.services-container').forEach(container => {
         });
     });
 
-        // Contact form handling (only if the form exists)
+       // Contact form handling (only if the form exists)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
