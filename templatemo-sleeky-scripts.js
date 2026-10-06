@@ -394,6 +394,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact form handling
     document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
+
+         
+//eliminate section if needed
+            // Services tab functionality
+    const contactTabs = document.querySelectorAll('.contact-tab');
+    const contactContents = document.querySelectorAll('.contact-content');
+
+    contactTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetContact = tab.getAttribute('data-contact');
+            
+            // Remove active class from all tabs and contents
+            contactTabs.forEach(t => t.classList.remove('active'));
+            contactContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Show corresponding content
+            const targetContent = document.getElementById(targetContact);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+ //eliminate section if needed
         
         // Simple form validation feedback
         const formData = new FormData(e.target);
