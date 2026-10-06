@@ -368,57 +368,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveNavigation);
 
-// Services tab functionality (works per section)
-document.querySelectorAll('.services-container').forEach(container => {
-    const tabs = container.querySelectorAll('.service-tab');
-    const contents = Array.from(container.querySelectorAll('.service-content'));
+    // Services tab functionality (works per section, matched by position)
+    document.querySelectorAll('.services-container').forEach(container => {
+        const tabs = container.querySelectorAll('.service-tab');
+        const contents = container.querySelectorAll('.service-content');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const target = tab.getAttribute('data-service');
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-            tab.classList.add('active');
-            const match = contents.find(c => c.id === target);
-            if (match) match.classList.add('active');
-        });
-    });
-});
-            
-            // Remove active class from all tabs and contents
-            serviceTabs.forEach(t => t.classList.remove('active'));
-            serviceContents.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked tab
-            tab.classList.add('active');
-            
-            // Show corresponding content
-            const targetContent = document.getElementById(targetService);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
+        tabs.forEach((tab, i) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                if (contents[i]) contents[i].classList.add('active');
+            });
         });
     });
 
-       // Contact form handling (only if the form exists)
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(e.target));
-        alert(`Thank you ${data.name}! Your message has been sent. We'll get back to you at ${data.email} soon.`);
-        e.target.reset();
-    });
-}
-        
-        // Simple form validation feedback
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-        
-        // Simulate form submission
-        alert(`Thank you ${data.name}! Your message has been sent. We'll get back to you at ${data.email} soon.`);
-        e.target.reset();
-    });
+    // Contact form handling (only if the form exists)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target));
+            alert(`Thank you ${data.name}! Your message has been sent. We'll get back to you at ${data.email} soon.`);
+            e.target.reset();
+        });
+    }
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
